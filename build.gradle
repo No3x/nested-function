@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+    id("io.freefair.lombok") version "8.6"
+    id("maven-publish")
+}
+
+group = 'de.no3x'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '21'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "com.google.guava:guava:31.1-jre"
+    testImplementation 'org.mockito:mockito-junit-jupiter:4.1.0'
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.9.3"
+    testImplementation 'org.assertj:assertj-core:3.24.2'
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
