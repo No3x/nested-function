@@ -16,10 +16,11 @@ But there is no benefit to it. You can archive the same with `Function#andThen` 
 You can chain a NestedFunction with a Predicate using the `then` method:
 
 ```java
-Predicate<World> treeHasBranchAndHasGreenLeaf = NestedFunction.of(World::getTree)
+Predicate<World> treeHasBranchAndHasGreenLeaf = NestedFunction
+    .of(World::getTree)
     .nested(Tree::getBranch)
     .nested(Branch::getLeaf)
-    .then(Leaf::isGreen);
+    .predicate(Leaf::isGreen);
 
 assertThat(treeHasBranchAndHasGreenLeaf).accepts(world);
 ```

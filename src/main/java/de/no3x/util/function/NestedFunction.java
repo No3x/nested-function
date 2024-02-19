@@ -11,14 +11,14 @@ import java.util.function.Predicate;
 public interface NestedFunction<T, R> extends Function<T, R> {
 
     static <T, R> NestedFunction<T, R> of(Function<T, R> mapper) {
-        return (T t) -> mapper.apply(t);
+        return mapper::apply;
     }
 
     default <V> NestedFunction<T, V> nested(NestedFunction<R, V> mapper) {
         return (T t) -> Optional.ofNullable(apply(t)).map(mapper).orElse(null);
     }
 
-    default Predicate<T> then(Predicate<R> predicate) {
+    default Predicate<T> predicate(Predicate<R> predicate) {
         return (T t) -> Optional.ofNullable(apply(t)).stream().anyMatch(predicate);
     }
 

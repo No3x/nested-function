@@ -83,7 +83,7 @@ class NestedFunctionTest {
         void simpleTwoLevel_greenLeaf_accepts() {
             final Branch branch = Branch.builder().withLeaf(Leaf.builder().isGreen(true));
 
-            Predicate<Branch> branchHasGreenLeaf = NestedFunction.of(Branch::getLeaf).then(Leaf::isGreen);
+            Predicate<Branch> branchHasGreenLeaf = NestedFunction.of(Branch::getLeaf).predicate(Leaf::isGreen);
 
             assertThat(branchHasGreenLeaf).accepts(branch);
         }
@@ -93,7 +93,7 @@ class NestedFunctionTest {
             final Branch branch = Branch.builder().withLeaf(Leaf.builder().isGreen(false));
 
             Predicate<Branch> branchHasGreenLeaf = NestedFunction.of(Branch::getLeaf)
-                    .then(Leaf::isGreen);
+                    .predicate(Leaf::isGreen);
 
             assertThat(branchHasGreenLeaf).rejects(branch);
         }
@@ -117,7 +117,7 @@ class NestedFunctionTest {
 
             Predicate<Tree> treeHasBranchAndHasGreenLeaf = NestedFunction.of(Tree::getBranch)
                     .nested(Branch::getLeaf)
-                    .then(Leaf::isGreen);
+                    .predicate(Leaf::isGreen);
 
             assertThat(treeHasBranchAndHasGreenLeaf).accepts(tree);
         }
@@ -128,7 +128,7 @@ class NestedFunctionTest {
 
             Predicate<Tree> treeHasBranchAndHasGreenLeaf = NestedFunction.of(Tree::getBranch)
                     .nested(Branch::getLeaf)
-                    .then(Leaf::isGreen);
+                    .predicate(Leaf::isGreen);
 
             assertThat(treeHasBranchAndHasGreenLeaf).rejects(tree);
         }
@@ -139,7 +139,7 @@ class NestedFunctionTest {
 
             Predicate<Tree> treeHasBranchAndHasGreenLeaf = NestedFunction.of(Tree::getBranch)
                     .nested(Branch::getLeaf)
-                    .then(Leaf::isGreen);
+                    .predicate(Leaf::isGreen);
 
             assertThat(treeHasBranchAndHasGreenLeaf).rejects(tree);
         }
@@ -154,7 +154,7 @@ class NestedFunctionTest {
             Predicate<World> treeHasBranchAndHasGreenLeaf = NestedFunction.of(World::getTree)
                     .nested(Tree::getBranch)
                     .nested(Branch::getLeaf)
-                    .then(Leaf::isGreen);
+                    .predicate(Leaf::isGreen);
 
             assertThat(treeHasBranchAndHasGreenLeaf).accepts(world);
         }
