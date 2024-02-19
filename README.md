@@ -28,6 +28,7 @@ assertThat(treeHasBranchAndHasGreenLeaf).accepts(world);
 You can cache results of a NestedFunction using the `cached` method:
 
 ### As result cache
+
 ```java
 NestedFunction<Integer, Integer> function = NestedFunction.of(num -> num * 2);
 Function<Integer, Integer> cachedFunction = function.cached(num -> expensiveOperation(num));
@@ -36,15 +37,16 @@ final List<Integer> collect = Stream.of(2, 4, 5, 6, 2).map(cachedFunction).colle
 System.out.println(collect);
 
 private static int expensiveOperation(Integer num) {
-    System.out.println("not cached");
-    return num * 2;
+    final int result = num * 2;
+    System.out.println(result + " not cached");
+    return result;
 }
 
 Prints
-not cached
-not cached
-not cached
-not cached
+8 not cached
+16 not cached
+20 not cached
+24 not cached
 [8, 16, 20, 24, 8]
 ```
 Another useful sample is when calling an external webservice where you know it will return the same response per `Type`.
@@ -57,7 +59,7 @@ assertThat(filtered).extracting(MyModel::getType).containsOnly(MyType.B);
 ```
 ### As Filter
 ```java
-NestedFunction<Integer, Integer> function = NestedFunction.of(num -> num * 2);
+NestedFunction<Integer, Integer> function = NestedFunction.of(num -> num * 3);
 Function<Integer, Boolean> cachedFunction = function.cached(num -> expensiveOperation(num));
 
 final List<Integer> collect = Stream.of(2, 4, 5, 6, 2).filter(cachedFunction::apply).collect(Collectors.toList());
@@ -65,13 +67,14 @@ final List<Integer> collect = Stream.of(2, 4, 5, 6, 2).filter(cachedFunction::ap
 System.out.println(collect);
 
 private static boolean expensiveOperation(Integer num) {
-    System.out.println("not cached");
-    return num % 2 == 0;
+    final boolean result = num % 2 == 0;
+    System.out.println(result + " not cached");
+    return result;
 }
 Prints
-not cached
-not cached
-not cached
-not cached
-[2, 4, 5, 6, 2]
+true not cached
+true not cached
+false not cached
+true not cached
+[2, 4, 6, 2]
 ```
