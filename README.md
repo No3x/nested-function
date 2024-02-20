@@ -2,7 +2,7 @@
 
 ## Chaining
 You can create a `NestedFunction` using the static method `of`, which wraps a regular Function.
-Then you can chain `NestedFunction`s together using the nested method:
+Then you can chain `NestedFunction`s together by using the `nested` method:
 
 ```java
 NestedFunction<Integer, String> function1 = NestedFunction.of(num -> String.valueOf(num * 2));
@@ -25,7 +25,7 @@ Predicate<World> treeHasBranchAndHasGreenLeaf = NestedFunction
 assertThat(treeHasBranchAndHasGreenLeaf).accepts(world);
 ```
 ## Caching Results
-You can cache results of a `NestedFunction` using the `cached` method:
+You can cache results of a `NestedFunction` by using the `cached` method:
 
 ### As result cache
 
