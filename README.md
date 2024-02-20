@@ -13,7 +13,7 @@ Integer result = chainedFunction.apply(5); // result will be 11
 But there is no benefit to it. You can archive the same with `Function#andThen` already. So please see the other samples.
 
 ## Chaining with Predicates
-You can chain a NestedFunction with a Predicate using the `then` method:
+You can create a Predicate of a NestedFunction with using the `predicate` method:
 
 ```java
 Predicate<World> treeHasBranchAndHasGreenLeaf = NestedFunction
