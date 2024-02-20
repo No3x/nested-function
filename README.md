@@ -1,5 +1,7 @@
 # NestedFunction
 
+Simple extension of `Function` to express chained (or nested) `Functions` fluently. Nested means a function is dependent on the output of the previous function.
+
 ## Chaining
 You can create a `NestedFunction` using the static method `of`, which wraps a regular Function.
 Then you can chain `NestedFunction`s together by using the `nested` method:
@@ -24,7 +26,7 @@ Predicate<World> treeHasBranchAndHasGreenLeaf = NestedFunction
 
 assertThat(treeHasBranchAndHasGreenLeaf).accepts(world);
 ```
-## Caching Results
+## Chaining with Caching Results
 You can cache results of a `NestedFunction` by using the `cached` method:
 
 ### As result cache
