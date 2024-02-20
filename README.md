@@ -2,6 +2,18 @@
 
 Simple extension of `Function` to express chained (or nested) `Functions` fluently. Nested means a function is dependent on the output of the previous function.
 
+## Installation
+
+[![](https://jitpack.io/v/No3x/nested-function.svg)](https://jitpack.io/#No3x/nested-function)
+
+Distribution over Jitpack. Please see instructions there for installation. 
+
+Use jitpack version selector if you want a fixed branch/tag/commit.
+
+| Version| Binary| Sources | Java version | Documentation                                                                              |
+| -------- | ------- |---------|----|--------------------------------------------------------------------------------------------|
+|main-SNAPSHOT|[JAR](https://javadoc.jitpack.io/com/github/No3x/nested-function/main-SNAPSHOT/nested-function-main-SNAPSHOT.jar)| [Sources](https://javadoc.jitpack.io/com/github/No3x/nested-function/main-SNAPSHOT/nested-function-main-SNAPSHOT-javadoc.jar) | 9  | [Documentation](https://jitpack.io/com/github/No3x/nested-function/main-SNAPSHOT/javadoc/) |x|
+
 ## Chaining
 You can create a `NestedFunction` using the static method `of`, which wraps a regular Function.
 Then you can chain `NestedFunction`s together by using the `nested` method:
