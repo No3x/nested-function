@@ -4,6 +4,8 @@ plugins {
 
 subprojects {
 
+    apply plugin: 'nested-function.java-conventions'
+
     dependencies {
         implementation project(":nested-function-core")
         implementation project(":nested-function-test-common")

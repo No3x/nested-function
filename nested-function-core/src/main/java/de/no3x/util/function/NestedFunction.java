@@ -3,6 +3,7 @@ package de.no3x.util.function;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
+import de.no3x.util.function.util.Either;
 
 import java.util.Optional;
 import java.util.function.Function;
@@ -59,6 +60,22 @@ public interface NestedFunction<T, R> extends Function<T, R> {
     default <V> Function<T, V> cached(NestedFunction<R, V> mapper) {
         LoadingCache<R, V> cache = CacheBuilder.newBuilder().build(CacheLoader.from(mapper::apply));
         return (T t) -> Optional.ofNullable(apply(t)).map(cache).orElse(null);
+    }
+
+    /**
+     * Return a function by applying a condition
+     *
+     * @param predicate predicate to wrapped to the result of the existing function
+     * @param eitherBuilder the condition to be evaluated for the mapping
+     * @param <V> the new type of the result of the new function
+     * @return the function
+     */
+    default <V> NestedFunction<T, V> either(Predicate<R> predicate, Function<Either.EitherBuilder.RequireIsTrue<V>, Either.EitherBuilder.EitherBuilderFinalStage<V>> eitherBuilder) {
+        return (T t) -> {
+            final Either<V, V> either = eitherBuilder.apply(Either.builder()).build();
+            final boolean check = andThen(predicate::test).apply(t);
+            return either.fold(check, Either::left, Either::left).getLeft();
+        };
     }
 }
 

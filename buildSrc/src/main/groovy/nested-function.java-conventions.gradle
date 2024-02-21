@@ -1,6 +1,5 @@
 plugins {
     id 'java'
-    id 'maven-publish'
 }
 
 group = 'de.no3x'
@@ -17,15 +16,4 @@ dependencies {
     testImplementation "org.junit.jupiter:junit-jupiter-api:5.9.3"
     testImplementation "org.junit.jupiter:junit-jupiter-engine:5.9.3"
     testImplementation 'org.assertj:assertj-core:3.24.2'
-}
-
-publishing {
-    publications {
-        maven(MavenPublication) {
-            groupId project.group
-            artifactId project.name
-            version project.version
-            from components.java
-        }
-    }
 }

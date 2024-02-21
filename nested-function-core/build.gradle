@@ -1,5 +1,5 @@
 plugins {
-    id 'nested-function.java-conventions'
+    id 'nested-function.java-library-conventions'
     id('java-library')
 }
 
