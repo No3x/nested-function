@@ -2,13 +2,3 @@ plugins {
     id 'nested-function.java-conventions'
     id("io.freefair.lombok") version "8.6"
 }
-
-subprojects {
-
-    apply plugin: 'nested-function.java-conventions'
-
-    dependencies {
-        implementation project(":nested-function-core")
-    }
-}
-
