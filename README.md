@@ -10,9 +10,9 @@ Distribution over Jitpack. Please see instructions there for installation.
 
 Use jitpack version selector if you want a fixed branch/tag/commit.
 
-| Version| Binary| Sources | Java version | Documentation                                                                              |
-| -------- | ------- |---------|----|--------------------------------------------------------------------------------------------|
-|main-SNAPSHOT|[JAR](https://javadoc.jitpack.io/com/github/No3x/nested-function/main-SNAPSHOT/nested-function-main-SNAPSHOT.jar)| [Sources](https://javadoc.jitpack.io/com/github/No3x/nested-function/main-SNAPSHOT/nested-function-main-SNAPSHOT-javadoc.jar) | 9  | [Documentation](https://jitpack.io/com/github/No3x/nested-function/main-SNAPSHOT/javadoc/) |x|
+|    Version    |                                                      Binary                                                       |                                                            Sources                                                            | Java version |                                       Documentation                                        |
+|:-------------:|:-----------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------:|:------------:|:------------------------------------------------------------------------------------------:|
+| main-SNAPSHOT | [JAR](https://javadoc.jitpack.io/com/github/No3x/nested-function/main-SNAPSHOT/nested-function-main-SNAPSHOT.jar) | [Sources](https://javadoc.jitpack.io/com/github/No3x/nested-function/main-SNAPSHOT/nested-function-main-SNAPSHOT-javadoc.jar) |      9       | [Documentation](https://jitpack.io/com/github/No3x/nested-function/main-SNAPSHOT/javadoc/) |
 
 ## Chaining
 You can create a `NestedFunction` using the static method `of`, which wraps a regular Function.
