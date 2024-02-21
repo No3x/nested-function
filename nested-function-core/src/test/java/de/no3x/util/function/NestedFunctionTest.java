@@ -1,7 +1,9 @@
 package de.no3x.util.function;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import de.no3x.util.function.testcommon.Branch;
+import de.no3x.util.function.testcommon.Leaf;
+import de.no3x.util.function.testcommon.Tree;
+import de.no3x.util.function.testcommon.World;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -19,63 +21,6 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class NestedFunctionTest {
-
-    @Data
-    @AllArgsConstructor
-    static class World {
-        private Tree tree;
-
-        static AddTree builder() {
-            return World::new;
-        }
-
-        interface AddTree {
-            World withTree(Tree tree);
-        }
-
-    }
-
-    @Data
-    @AllArgsConstructor
-    static class Tree {
-        private Branch branch;
-
-        static AddBranch builder() {
-            return Tree::new;
-        }
-
-        interface AddBranch {
-            Tree withBranch(Branch branch);
-        }
-    }
-
-    @Data
-    @AllArgsConstructor
-    static class Branch {
-        private Leaf leaf;
-
-        static Branch.AddLeaf builder() {
-            return Branch::new;
-        }
-
-        interface AddLeaf {
-            Branch withLeaf(Leaf leaf);
-        }
-    }
-
-    @Data
-    @AllArgsConstructor
-    static class Leaf {
-        private final boolean isGreen;
-
-        static Leaf.IsGreen builder() {
-            return Leaf::new;
-        }
-
-        interface IsGreen {
-            Leaf isGreen(boolean isGreen);
-        }
-    }
 
     @Nested
     class Simple {
@@ -169,10 +114,16 @@ class NestedFunctionTest {
             abstract boolean isRelevant(MyType type);
         }
 
-        @Data
-        @AllArgsConstructor
         class MyModel {
             private final MyType type;
+
+            MyModel(MyType type) {
+                this.type = type;
+            }
+
+            public MyType getType() {
+                return type;
+            }
         }
 
         @Mock

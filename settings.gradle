@@ -1,1 +1,12 @@
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}
+
 rootProject.name = 'nested-function'
+include 'nested-function-core', 'nested-function-test-common', 'nested-function-samples'
+include 'nested-function-samples:simple', 'nested-function-samples:visualization'
+

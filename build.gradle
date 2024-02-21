@@ -1,6 +1,5 @@
 plugins {
     id 'java-library'
-    id("io.freefair.lombok") version "8.6"
     id("maven-publish")
 }
 
@@ -14,27 +13,14 @@ java {
     withJavadocJar()
 }
 
-repositories {
-    mavenCentral()
+allprojects {
 }
 
-dependencies {
-    implementation "com.google.guava:guava:31.1-jre"
-    testImplementation 'org.mockito:mockito-junit-jupiter:4.1.0'
-    testImplementation "org.junit.jupiter:junit-jupiter-api:5.9.3"
-    testImplementation "org.junit.jupiter:junit-jupiter-engine:5.9.3"
-    testImplementation 'org.assertj:assertj-core:3.24.2'
+subprojects {
+    apply plugin: 'java'
 
-}
-
-publishing {
-    publications {
-        maven(MavenPublication) {
-            from components.java
-        }
+    tasks.named('test') {
+        useJUnitPlatform()
     }
 }
 
-tasks.named('test') {
-    useJUnitPlatform()
-}

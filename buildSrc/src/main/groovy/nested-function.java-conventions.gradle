@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+group = 'de.no3x'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_9
+    targetCompatibility = JavaVersion.VERSION_1_9
+}
+
+dependencies {
+    implementation "com.google.guava:guava:31.1-jre"
+    testImplementation 'org.mockito:mockito-junit-jupiter:4.1.0'
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.9.3"
+    testImplementation "org.junit.jupiter:junit-jupiter-engine:5.9.3"
+    testImplementation 'org.assertj:assertj-core:3.24.2'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId project.group
+            artifactId project.name
+            version project.version
+            from components.java
+        }
+    }
+}

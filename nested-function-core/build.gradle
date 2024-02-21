@@ -1,0 +1,17 @@
+plugins {
+    id 'nested-function.java-conventions'
+    id('java-library')
+}
+
+java {
+    withSourcesJar()
+    withJavadocJar()
+}
+
+javadoc {
+    exclude "de/no3x/util/function/util/**"
+}
+
+dependencies {
+    testImplementation project(":nested-function-test-common")
+}

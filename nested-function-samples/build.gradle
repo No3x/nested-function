@@ -1,0 +1,12 @@
+plugins {
+    id 'nested-function.java-conventions'
+}
+
+subprojects {
+
+    dependencies {
+        implementation project(":nested-function-core")
+        implementation project(":nested-function-test-common")
+    }
+}
+

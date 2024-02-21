@@ -1,0 +1,3 @@
+dependencies {
+    implementation "com.github.jrtom:jung:b5993da"
+}
